@@ -1,0 +1,6 @@
+apps:
+  - script: ./src/server/index.js
+    name: 'consilience'
+    watch: true
+    env:
+      NODE_ENV: production
