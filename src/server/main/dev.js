@@ -1,7 +1,7 @@
 import path from 'path'
 import { Router } from 'express'
 
-import { logger } from '../config/index'
+import { logger } from '../config'
 import API from '../api'
 
 export default Router()

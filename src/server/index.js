@@ -3,13 +3,13 @@ import { devRouter, prodRouter } from './main'
 import {
   isProd,
   PORT, 
-  initDB, 
+  // initDB, 
   logListen, 
   errorHandler 
 } from './config'
 
 try {
-  initDB()
+  // initDB()
 } catch (err) {
   console.error('Error Syncing DB...\n', err)
 } finally {

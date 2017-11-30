@@ -11,26 +11,33 @@ class ResultList extends Component {
   }
 
   render() {
-    const { fetchQueryResults, queryResults, location } = this.props
+    const { fetchQueryResults, queryResults, isLoading, location } = this.props
     const { q, src } = parse(location.search)
-    if (!queryResults) fetchQueryResults(q, src)
-
+    if (!queryResults.length) fetchQueryResults(q, 'arxiv')
+    
     return (
       <div>
-        <h1 className="title">Results for
-          <span id='result-query'> {q}</span>
-        </h1>
-        <div className="result-list-container">
-          {queryResults && queryResults.map((result, i) => (
-            <SingleResult resultData={result} key={i} />
-          ))}
+        <div id="result-title-container">
+          <h1 className="title" id="result-title">Results for
+            <span id='result-query'> {q}</span>
+          </h1>
         </div>
+        { !isLoading 
+          ? <div className="button is-loading" id="results-loading"></div>
+          :
+            <div className="result-list-container">
+              {queryResults && queryResults.map((result, i) => (
+                <SingleResult resultData={result} key={i} />
+              ))}
+            </div>
+        }
       </div>
     )
   }
 }
 
 const mapState = state => ({
+  isLoading: state.query.isLoading,
   queryResults: state.query.results
 })
 

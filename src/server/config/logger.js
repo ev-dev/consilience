@@ -2,7 +2,7 @@ import { Router } from 'express'
 import volleyball from 'volleyball'
 import chalk from 'chalk'
 
-import { pkgName, isProd, baseURL, PORT, database } from './index'
+import { pkgName, isProd, baseURL, PORT, dbConfig } from './index'
 
 export const logger = Router().use(volleyball)
 
@@ -26,7 +26,7 @@ export const logListen = () => {
           +   => ${chalk.yellow.bold('Listening')} @ ${FULL_URL}${' '.repeat(btmSpace)}+
           ${'-'.repeat(bars)}
 
-          Database:  ${chalk.green.bold(database.type)}
-          DB URL: ${chalk.cyan.bold(database.dbUrl)}
+          Database:  ${chalk.green.bold(dbConfig.type)}
+          DB URL: ${chalk.cyan.bold(dbConfig.dbUrl)}
     `)
 }

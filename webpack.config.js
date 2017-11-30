@@ -1,7 +1,10 @@
-import webpack from 'webpack'
-import path from 'path'
+const path = require('path')
+const webpack = require('webpack')
+const LiveReloadPlugin = require('webpack-livereload-plugin')
 
-const config = env => ({
+const isDev = true
+
+const config = {
   entry: path.join(__dirname, 'src', 'app', 'index'),
   output: {
     filename: 'bundle.js',
@@ -9,18 +12,23 @@ const config = env => ({
   },
   devtool: 'source-map',
   resolve: {
-    extensions: [ '.jsx', '.js', '.json' ],
+    extensions: ['.jsx', '.js', '.json', '.css', '.scss', '*'],
     alias: {
       '~': __dirname
     }
   },
-  devServer: devServer(env),
+  devServer: {
+    publicPath: path.join('/dist/')
+  },
   module: {
     rules: [{
       test: /jsx?$/,
       include: path.join(__dirname, 'src', 'app'),
       exclude: /node_modules/,
-      use: babel(env)
+      loader: 'babel-loader',
+      query: {
+        presets: ['react-app']
+      }
     }, 
     {
       test: /\.(jpeg|jpg|png)$/,
@@ -28,9 +36,22 @@ const config = env => ({
     },
     {
       test: /\.(css|scss|sass)$/,
-      use: [ 'style-loader', 'css-loader' ]
+      use: [{
+        loader: "style-loader"
+      }, {
+        loader: "css-loader"
+      }, {
+        loader: "sass-loader"
+      }]
     }]
-  }
-})
+  },
+  plugins: isDev
+    ? [
+        new LiveReloadPlugin({
+          appendScriptTag: true
+        })
+      ]
+    : []
+}
 
-export default config(process.env)
+module.exports = config

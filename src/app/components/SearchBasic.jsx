@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { stringify } from 'query-string'
 
 import { fetchQueryResults } from '../redux/queryReducer'
@@ -24,7 +25,7 @@ class SearchBasic extends Component {
     const { queryInput } = this.state
     evt.preventDefault()
 
-    fetchQueryResults(queryInput, selectedSource)
+    fetchQueryResults(queryInput, 'arxiv')
 
     const searchParams = stringify({
       src: 'all',
@@ -35,7 +36,7 @@ class SearchBasic extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleAdvancedQuerySubmit}>
+      <form onSubmit={this.handleQuerySubmit}>
         <div className='field has-addons'>
           <div className='control has-icons-left'>
             <input
@@ -43,6 +44,7 @@ class SearchBasic extends Component {
               className='input searchbar-input'
               name='search-advanced'
               type='search'
+              required
               placeholder='Find Papers...'
             />
             <span className='icon is-small is-left'>
@@ -64,4 +66,4 @@ class SearchBasic extends Component {
 
 const mapDispatch = { fetchQueryResults }
 
-export default connect(null, mapDispatch)(SearchBasic)
+export default withRouter(connect(null, mapDispatch)(SearchBasic))

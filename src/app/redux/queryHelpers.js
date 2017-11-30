@@ -3,7 +3,7 @@ import { Parser } from 'xml2js'
 import { promisify } from 'bluebird'
 const parseXML = promisify(new Parser().parseString)
 
-import { AZURE_KNOWLEDGE_KEY } from '../../API_KEYS'
+import { AZURE_KNOWLEDGE_KEY } from '../../../API_KEYS'
 
 /* ------ Helper Functions for Querying Per Source ------ */
 

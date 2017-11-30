@@ -57,7 +57,7 @@ class Home extends Component {
           <h1 className='home-title-p1'>A New Home</h1>
           <h2 className="home-title-p2">For The Latest Research.</h2>
           <h3 className='home-subtitle'>
-            <em>aggSci</em> is an aggregator for scientific literature. 
+            <em>Project Consilience</em> is an aggregator for scientific literature. 
           </h3>
           <h3 className='home-subtitle-p2'>
             We source popular publishers as well as preprint services.
