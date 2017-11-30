@@ -15,7 +15,7 @@
     "test": "nodemon tests/testServer.js --watch tests",
     "start": "npm run build && npm run serve",
     "build": "cross-env NODE_ENV=production webpack",
-    "serve": "cross-env NODE_ENV=production node ./src/server/index.js",
+    "serve": "cross-env NODE_ENV=production node -r @std/esm ./src/server/index.js",
     "seed": "node -r @std/esm ./src/server/config/seed.js"
   },
   "keywords": [
