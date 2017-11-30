@@ -1,12 +1,11 @@
 import path from 'path'
 import { Router } from 'express'
 
-import { logger } from '../config/index'
-import apiRouter from '../api'
+import API from '../api'
 
 export default Router()
   /* --- API Router --- */
-  .use(apiRouter)
+  .use(API)
   
   /* --- Serve React App --- */
   .get('/bundle.js', (req, res) => {
