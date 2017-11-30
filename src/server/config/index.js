@@ -5,7 +5,7 @@ const pkgName = process.env.npm_package_name
   , useHMR = true
   , forceSeed = true
   , baseURL = 'http://localhost:'
-  , PORT = isProd ? 80 : 3000
+  , PORT = isProd ? 8003 : 3000
   , hasSockets = true  // setup websockets for GraphQL Subscriptions
   , dbConfig = {
       activeDB: false,  // toggle DB use
