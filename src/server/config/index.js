@@ -1,6 +1,6 @@
 
 
-const pkgName = process.env.npm_package_name
+const pkgName = process.env.npm_package_name || 'consilience'
   , isProd = process.env.NODE_ENV === 'production'
   , useHMR = true
   , forceSeed = true
